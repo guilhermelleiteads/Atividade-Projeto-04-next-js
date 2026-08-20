@@ -343,10 +343,10 @@ export default function Game() {
         pointerEvents: "none"
       }} className="mobile-controls">
         <div style={{display:"flex", gap:10}}>
-          <button onPointerDown={() => mobileKey("arrowleft", true)} onPointerUp={() => mobileKey("arrowleft", false)}>◀</button>
-          <button onPointerDown={() => mobileKey("arrowright", true)} onPointerUp={() => mobileKey("arrowright", false)}>▶</button>
+          <button onPointerDown={(e) => { e.currentTarget.setPointerCapture(e.pointerId); mobileKey("arrowleft", true); }} onPointerUp={() => mobileKey("arrowleft", false)} onPointerCancel={() => mobileKey("arrowleft", false)}>◀</button>
+          <button onPointerDown={(e) => { e.currentTarget.setPointerCapture(e.pointerId); mobileKey("arrowright", true); }} onPointerUp={() => mobileKey("arrowright", false)} onPointerCancel={() => mobileKey("arrowright", false)}>▶</button>
         </div>
-        <button onPointerDown={() => mobileKey(" ", true)} onPointerUp={() => mobileKey(" ", false)}>JUMP</button>
+        <button onPointerDown={(e) => { e.currentTarget.setPointerCapture(e.pointerId); mobileKey(" ", true); }} onPointerUp={() => mobileKey(" ", false)} onPointerCancel={() => mobileKey(" ", false)}>JUMP</button>
       </div>
 
       {mode !== "playing" && (
